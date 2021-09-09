@@ -1,16 +1,20 @@
 package com.bookit.step_definitions;
 
+import com.bookit.utilities.ConfigurationReader;
 import com.bookit.utilities.DBUtils;
 import com.bookit.utilities.Driver;
 import cucumber.api.Scenario;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.restassured.RestAssured;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 import java.util.concurrent.TimeUnit;
 
+
 public class Hooks {
+
     @Before("@db")
     public void dbHook() {
         System.out.println("creating database connection");
@@ -41,5 +45,9 @@ public class Hooks {
         }
         Driver.closeDriver();
     }
+
+
+
+
 
 }

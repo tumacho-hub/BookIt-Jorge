@@ -1,16 +1,16 @@
 package com.bookit.step_definitions;
 
+
 import com.bookit.pages.SelfPage;
-import com.bookit.utilities.BookItApiUtil;
-import com.bookit.utilities.BrowserUtils;
-import com.bookit.utilities.ConfigurationReader;
-import com.bookit.utilities.Driver;
+import com.bookit.pages.SignInPage;
+import com.bookit.utilities.*;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
-public class MyInfoStepsDefs {
-    private Environment;
 
+public class MyInfoStepDefs {
+
+    @Given("user logs in using {string} {string}")
     public void user_logs_in_using(String email, String password) {
         Driver.get().get(Environment.URL);
         Driver.get().manage().window().maximize();
@@ -21,6 +21,7 @@ public class MyInfoStepsDefs {
         signInPage.signInButton.click();
 
 
+
     }
 
     @When("user is on the my self page")
@@ -28,9 +29,23 @@ public class MyInfoStepsDefs {
         SelfPage selfPage = new SelfPage();
         selfPage.goToSelf();
 
+    }
+
+
+    @Given("I get env properties")
+    public void iGetEnvProperties() {
+
+        System.out.println(Environment.URL);
+        System.out.println(Environment.BASE_URL);
+        System.out.println(Environment.DB_URL);
+
+        System.out.println(Environment.TEACHER_EMAIL);
+        System.out.println(Environment.TEACHER_PASSWORD);
+
+        BookItApiUtil.getTokenByRole("teacher");
+        BookItApiUtil.getTokenByRole("student-member");
+        BookItApiUtil.getTokenByRole("student-leader");
+
 
     }
 }
-
-
-

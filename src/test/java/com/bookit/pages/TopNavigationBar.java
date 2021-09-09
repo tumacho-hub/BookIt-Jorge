@@ -50,5 +50,3 @@ public abstract class TopNavigationBar {
         signOut.click();
     }
 }
-
-
